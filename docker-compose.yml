@@ -16,10 +16,10 @@ services:
   pgadmin:
     image: dpage/pgadmin4
     environment:
-      PGADMIN_DEFAULT_EMAIL: "postgres@admin.com"
+      PGADMIN_DEFAULT_EMAIL: "postgres@amdin.com"
       PGADMIN_DEFAULT_PASSWORD: "postgres"
     ports:
-      - "80:80"
+      - "12345:80"
     depends_on:
       - postgres
 
@@ -31,6 +31,8 @@ services:
       - SPRING_DATASOURCE_PASSWORD=postgres
       - SERVER_PORT=8080
       - SPRING_PROFILES_ACTIVE=docker
+      - GITHUB_CLIENT_ID=${GITHUB_CLIENT_ID}
+      - GITHUB_CLIENT_SECRET=${GITHUB_CLIENT_SECRET}
     ports:
       - "8080:8080"
     depends_on:
