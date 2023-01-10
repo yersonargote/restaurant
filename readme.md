@@ -2,6 +2,8 @@
 
 App to manage menu, orders and customers for a restaurant.
 
+My first app using spring boot 3 and gradle.
+
 ## Build and run
 
 I will use docker and docker-compose.
@@ -58,7 +60,7 @@ POST request ```localhost:8080/api/v1/auth/login```
 }
 ```
 
-## Todo list
+# Todo list
 
 - [x] Register user
 - [x] Login
@@ -67,6 +69,22 @@ POST request ```localhost:8080/api/v1/auth/login```
 - [ ] Create daily menu
 - [ ] Create orders
 - [ ] Create tickets
+
+# Try
+
+1. Native images with spring boot and gradle
+
+Install plugin.
+
+```yaml
+plugins {
+  id 'org.graalvm.buildtools.native' version '0.9.14'
+}
+```
+
+```bash
+./gradlew nativeCompile
+```
 
 # Commands
 
@@ -81,3 +99,11 @@ POST request ```localhost:8080/api/v1/auth/login```
 ```bash
 ./gradlew bootBuildImage --imageName=yersonargote/restaurante
 ```
+
+# Resources
+
+[Spring Security, demystified by Daniel Garnier Moiroux](https://youtu.be/iJ2muJniikY)
+
+[Spring boot 3.0 - Secure your API with JWT Token 2023](https://youtu.be/BVdQ3iuovg0)
+
+[Spring Boot and OAuth2](https://spring.io/guides/tutorials/spring-boot-oauth2/)
