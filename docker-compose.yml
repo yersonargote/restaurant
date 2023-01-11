@@ -23,18 +23,18 @@ services:
     depends_on:
       - postgres
 
-  spring:
-    image: yersonargote/restaurant
-    environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/postgres
-      - SPRING_DATASOURCE_USERNAME=postgres
-      - SPRING_DATASOURCE_PASSWORD=postgres
-      - SERVER_PORT=8080
-      - SPRING_PROFILES_ACTIVE=docker
-      - GITHUB_CLIENT_ID=${GITHUB_CLIENT_ID}
-      - GITHUB_CLIENT_SECRET=${GITHUB_CLIENT_SECRET}
-    ports:
-      - "8080:8080"
-    depends_on:
-      - postgres
-    restart: always
+#  spring:
+#    image: yersonargote/restaurant
+#    environment:
+#      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/postgres
+#      - SPRING_DATASOURCE_USERNAME=postgres
+#      - SPRING_DATASOURCE_PASSWORD=postgres
+#      - SERVER_PORT=8080
+#      - SPRING_PROFILES_ACTIVE=docker
+#      - GITHUB_CLIENT_ID=${GITHUB_CLIENT_ID}
+#      - GITHUB_CLIENT_SECRET=${GITHUB_CLIENT_SECRET}
+#    ports:
+#      - "8080:8080"
+#    depends_on:
+#      - postgres
+#    restart: always
