@@ -12,20 +12,18 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.List;
 
-@Data
 @Builder
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table(name="_user")
-public class User implements UserDetails {
-    @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    Long id;
-    String username;
-    String password;
-    @Enumerated(value=EnumType.STRING)
-    Role role;
+public record User(
+        @Id @GeneratedValue(strategy=GenerationType.IDENTITY) Long id,
+        String username,
+        String password,
+        @Enumerated(value=EnumType.STRING) Role role
+        ) implements UserDetails {
+    public User() {
+        this(0L, "", "", Role.USER);
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

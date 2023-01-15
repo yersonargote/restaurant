@@ -100,6 +100,17 @@ plugins {
 ./gradlew bootBuildImage --imageName=yersonargote/restaurante
 ```
 
+- To compile app
+
+```bash
+./gradlew nativeCompile
+```
+
+- To have AOT optimized app
+```bash
+./gradlew bootJar
+```
+
 # Resources
 
 [Spring Security, demystified by Daniel Garnier Moiroux](https://youtu.be/iJ2muJniikY)
