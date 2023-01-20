@@ -42,6 +42,9 @@ public class SecurityConfiguration {
         http
                 .formLogin(Customizer.withDefaults())
                 .oauth2Login(Customizer.withDefaults());
+        http
+                .logout()
+                .logoutSuccessUrl("/");
         return http.build();
     }
 }
