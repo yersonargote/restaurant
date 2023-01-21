@@ -10,25 +10,31 @@ I will use docker and docker-compose.
 
 1. Clone the repository
 
-```git clone yersonargote/restaurant```
-
-```cd restaurant```
+```bash
+git clone yersonargote/restaurant && cd restaurant
+```
 
 2. Load env variables
 
-```source .env```
+```bash
+source .env
+```
 
 *Note*: The environment variables needed are in `docker-compose.yml` and `application.yml`.
 
 3. Build app
 
-```DOCKER_BUILDKIT=1 docker build -t yersonargote/restaurant .``` 
+```bash
+DOCKER_BUILDKIT=1 docker build -t yersonargote/restaurant . 
+```
 
 4. Run app
 
-```docker-compose up```
+```bash
+docker-compose up
+```
 
-Shutdown the app do ```docker-compose down```
+Shutdown the app do `docker-compose down`
 
 ## API
 
@@ -36,7 +42,7 @@ Shutdown the app do ```docker-compose down```
 
 **Register user**
 
-POST request ```localhost:8080/api/v1/auth/register```
+POST request `localhost:8080/api/v1/auth/register`
 
 *Body request example*:
 
@@ -49,7 +55,7 @@ POST request ```localhost:8080/api/v1/auth/register```
 
 **Login**
 
-POST request ```localhost:8080/api/v1/auth/login```
+POST request `localhost:8080/api/v1/auth/login`
 
 *Body request example*:
 
@@ -62,15 +68,19 @@ POST request ```localhost:8080/api/v1/auth/login```
 
 # Todo list
 
+### Security
 - [x] Register user
 - [x] Login
     - [x] Oauth2 with GitHub
-- [ ] Logout
-- [ ] Create daily menu
-- [ ] Create orders
-- [ ] Create tickets
+- [x] Logout
+ 
+### Domain
+- [x] Create daily menu
+- [x] Create orders
+- [x] Create tickets
+- [ ] Relationships between entities
 
-# Try
+# Native Compilation
 
 1. Native images with spring boot and gradle
 
