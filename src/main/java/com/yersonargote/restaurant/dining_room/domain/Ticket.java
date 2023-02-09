@@ -12,6 +12,9 @@ public record Ticket(
         @Id
         @GeneratedValue(strategy = GenerationType.UUID)
         UUID id,
-        List<Boolean> days
+        List<Boolean> days,
+        @ManyToOne
+        @JoinColumn(name = "client_id")
+        Client client
 ) {
 }

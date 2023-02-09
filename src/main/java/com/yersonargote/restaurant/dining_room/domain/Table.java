@@ -1,10 +1,8 @@
 package com.yersonargote.restaurant.dining_room.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -13,6 +11,10 @@ public record Table(
         @Id
         @GeneratedValue(strategy = GenerationType.UUID)
         UUID id,
-        int number
+        int number,
+        int capacity,
+        boolean available,
+        @ManyToMany(mappedBy = "tables", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+        List<Order> orders
 ) {
 }

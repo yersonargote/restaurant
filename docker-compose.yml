@@ -16,7 +16,7 @@ services:
   pgadmin:
     image: dpage/pgadmin4
     environment:
-      PGADMIN_DEFAULT_EMAIL: "postgres@amdin.com"
+      PGADMIN_DEFAULT_EMAIL: "postgres@admin.com"
       PGADMIN_DEFAULT_PASSWORD: "postgres"
     ports:
       - "12345:80"

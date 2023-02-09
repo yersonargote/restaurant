@@ -10,9 +10,12 @@ import java.util.UUID;
 public record Payment(
         @Id
         @GeneratedValue(strategy = GenerationType.UUID)
-        UUID id
-        // Order
-        // Client
-        // Amount
+        UUID id,
+        @Column(name = "payment_type")
+        @Enumerated(value = EnumType.STRING)
+        PaymentType paymentType,
+        Long amount,
+        @OneToOne(mappedBy = "payment")
+        Order order
 ) {
 }
