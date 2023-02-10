@@ -12,13 +12,18 @@ public record Employee(
         @Id
         @GeneratedValue(strategy = GenerationType.UUID)
         UUID id,
+        @Column(nullable = false)
         String name,
+        @Column(nullable = false)
         String lastName,
+        @Column(nullable = false)
         String email,
+        @Column(nullable = false)
         String phone,
+        @Column(name = "employee_type", nullable = false)
         @Enumerated(value = EnumType.STRING)
         EmployeeType employeeType,
-        @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+        @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
         List<Order> orders
 ) {
 }

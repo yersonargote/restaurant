@@ -11,9 +11,11 @@ public record OrderDetail(
         @Id
         @GeneratedValue(strategy = GenerationType.UUID)
         UUID id,
+        @Column(nullable = false)
         Long quantity,
-        @Column(name = "unit_price")
+        @Column(name = "unit_price", nullable = false)
         Long unitPrice,
+        @Column(nullable = false)
         Long discount,
         @Id
         @ManyToOne

@@ -12,12 +12,15 @@ public record Dish(
         @Id
         @GeneratedValue(strategy = GenerationType.UUID)
         UUID id,
+        @Column(nullable = false)
         String name,
+        @Column(nullable = false)
         String description,
+        @Column(nullable = false)
         Double price,
-        @OneToMany(mappedBy = "dishes", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+        @OneToMany(mappedBy = "dishes", cascade = CascadeType.ALL)
         List<OrderDetail> ordersDetail,
-        @ManyToMany(mappedBy = "dishes")
+        @ManyToMany(mappedBy = "dishes", cascade = CascadeType.ALL)
         List<Menu> menus
 ) {
 }

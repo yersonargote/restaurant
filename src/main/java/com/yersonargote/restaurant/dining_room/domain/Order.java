@@ -14,25 +14,23 @@ public record Order(
         @Id
         @GeneratedValue(strategy = GenerationType.UUID)
         UUID id,
-        @DateTimeFormat(pattern = "yyyy-MM-dd")
-        Date date,
-        @OneToMany(mappedBy = "order", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+        @Column(nullable = false)
+        @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+        Date datetime,
+        @Column(nullable = false)
+        @Enumerated(EnumType.STRING)
+        OrderStatus status,
+        @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
         List<OrderDetail> ordersDetail,
         @ManyToOne
         @JoinColumn(name = "employee_id")
         Employee employee,
-        @ManyToMany(cascade = CascadeType.ALL)
-        @JoinTable(
-                name = "orders_tables",
-                joinColumns = @JoinColumn(name = "order_id", referencedColumnName = "id"),
-                inverseJoinColumns = @JoinColumn(name = "table_id", referencedColumnName = "id")
-        )
-        List<com.yersonargote.restaurant.dining_room.domain.Table> tables,
         @ManyToOne
         @JoinColumn(name = "client_id")
         Client client,
-        @OneToOne
-        @JoinColumn(name = "payment_id")
-        Payment payment
+        @OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
+        Payment payment,
+        @OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
+        Ticket ticket
 ) {
 }

@@ -11,10 +11,11 @@ public record Table(
         @Id
         @GeneratedValue(strategy = GenerationType.UUID)
         UUID id,
+        @Column(nullable = false)
         int number,
+        @Column(nullable = false)
         int capacity,
-        boolean available,
-        @ManyToMany(mappedBy = "tables", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-        List<Order> orders
+        @Column(nullable = false)
+        boolean available
 ) {
 }

@@ -13,7 +13,9 @@ public record Menu(
         @Id
         @GeneratedValue(strategy = GenerationType.UUID)
         UUID id,
+        @Column(nullable = false)
         String name,
+        @Column(nullable = false)
         Date date,
         @ManyToMany(cascade = CascadeType.ALL)
         @JoinTable(

@@ -12,11 +12,11 @@ public record Client(
         @Id
         @GeneratedValue(strategy = GenerationType.UUID)
         UUID id,
+        @Column(nullable = false)
         String name,
+        @Column(nullable = false)
         String phone,
         @OneToMany(mappedBy = "client")
-        List<Order> orders,
-        @OneToMany(mappedBy = "client")
-        List<Ticket> tickets
+        List<Order> orders
 ) {
 }
