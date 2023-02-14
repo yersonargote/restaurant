@@ -2,11 +2,13 @@ package com.yersonargote.restaurant.dining_room.domain;
 
 import jakarta.persistence.*;
 import jakarta.persistence.Table;
+import lombok.Builder;
 
 import java.util.UUID;
 
 @Entity
 @Table(name = "order_details")
+@Builder
 public record OrderDetail(
         @Id
         @GeneratedValue(strategy = GenerationType.UUID)
@@ -14,9 +16,9 @@ public record OrderDetail(
         @Column(nullable = false)
         Long quantity,
         @Column(name = "unit_price", nullable = false)
-        Long unitPrice,
+        Double unitPrice,
         @Column(nullable = false)
-        Long discount,
+        Double discount,
         @Id
         @ManyToOne
         @JoinColumn(name = "order_id")
@@ -24,6 +26,6 @@ public record OrderDetail(
         @Id
         @ManyToOne
         @JoinColumn(name = "dish_id")
-        Dish dishes
+        Dish dish
 ) {
 }

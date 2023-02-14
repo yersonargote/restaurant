@@ -2,6 +2,7 @@ package com.yersonargote.restaurant.dining_room.domain;
 
 import jakarta.persistence.*;
 import jakarta.persistence.Table;
+import lombok.Builder;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
@@ -10,6 +11,7 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "orders")
+@Builder
 public record Order(
         @Id
         @GeneratedValue(strategy = GenerationType.UUID)

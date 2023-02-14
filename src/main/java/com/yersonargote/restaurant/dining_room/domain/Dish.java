@@ -2,12 +2,14 @@ package com.yersonargote.restaurant.dining_room.domain;
 
 import jakarta.persistence.*;
 import jakarta.persistence.Table;
+import lombok.Builder;
 
 import java.util.List;
 import java.util.UUID;
 
 @Entity
 @Table(name = "dishes")
+@Builder
 public record Dish(
         @Id
         @GeneratedValue(strategy = GenerationType.UUID)
@@ -18,9 +20,12 @@ public record Dish(
         String description,
         @Column(nullable = false)
         Double price,
-        @OneToMany(mappedBy = "dishes", cascade = CascadeType.ALL)
-        List<OrderDetail> ordersDetail,
-        @ManyToMany(mappedBy = "dishes", cascade = CascadeType.ALL)
-        List<Menu> menus
+        @Column(nullable = false)
+        Boolean available,
+        @Column(nullable = false)
+        @Enumerated(value = EnumType.STRING)
+        Category category,
+        @OneToMany(mappedBy = "dish", cascade = CascadeType.ALL)
+        List<OrderDetail> ordersDetail
 ) {
 }

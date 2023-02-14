@@ -1,12 +1,13 @@
 package com.yersonargote.restaurant.dining_room.domain;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 
-import java.util.List;
 import java.util.UUID;
 
 @Entity
 @jakarta.persistence.Table(name = "tables")
+@Builder
 public record Table(
         @Id
         @GeneratedValue(strategy = GenerationType.UUID)
