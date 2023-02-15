@@ -10,11 +10,11 @@ import org.springframework.stereotype.Component;
 public class OrderDetailMapper {
     public OrderDetailDTO toDTO(OrderDetail orderDetail) {
         return OrderDetailDTO.builder()
-                .quantity(orderDetail.quantity())
-                .unitPrice(orderDetail.unitPrice())
-                .discount(orderDetail.discount())
-                .orderId(orderDetail.order().id())
-                .dishId(orderDetail.dish().id())
+                .quantity(orderDetail.getQuantity())
+                .unitPrice(orderDetail.getUnitPrice())
+                .discount(orderDetail.getDiscount())
+                .orderId(orderDetail.getOrder().getId())
+                .dishId(orderDetail.getDish().getId())
                 .build();
     }
 

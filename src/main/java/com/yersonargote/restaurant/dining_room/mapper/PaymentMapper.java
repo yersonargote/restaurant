@@ -9,9 +9,9 @@ import org.springframework.stereotype.Component;
 public class PaymentMapper {
     public PaymentDTO toDTO(Payment payment) {
         return PaymentDTO.builder()
-                .paymentType(payment.paymentType())
-                .amount(payment.amount())
-                .orderId(payment.order().id())
+                .paymentType(payment.getPaymentType())
+                .amount(payment.getAmount())
+                .orderId(payment.getOrder().getId())
                 .build();
     }
 

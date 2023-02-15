@@ -8,9 +8,9 @@ import org.springframework.stereotype.Component;
 public class ClientMapper {
     public ClientDTO toDTO(Client client) {
         return ClientDTO.builder()
-                .name(client.name())
-                .lastName(client.lastName())
-                .phone(client.phone())
+                .name(client.getName())
+                .lastName(client.getLastName())
+                .phone(client.getPhone())
                 .build();
     }
 

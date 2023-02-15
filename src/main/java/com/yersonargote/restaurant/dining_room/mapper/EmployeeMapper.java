@@ -8,11 +8,11 @@ import org.springframework.stereotype.Component;
 public class EmployeeMapper {
     public EmployeeDTO toDTO(Employee employee) {
         return EmployeeDTO.builder()
-                .name(employee.name())
-                .lastName(employee.lastName())
-                .email(employee.email())
-                .phone(employee.phone())
-                .employeeType(employee.employeeType())
+                .name(employee.getName())
+                .lastName(employee.getLastName())
+                .email(employee.getEmail())
+                .phone(employee.getPhone())
+                .employeeType(employee.getEmployeeType())
                 .build();
     }
 

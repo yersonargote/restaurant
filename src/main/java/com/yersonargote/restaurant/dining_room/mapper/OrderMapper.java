@@ -10,10 +10,10 @@ import org.springframework.stereotype.Component;
 public class OrderMapper {
     public OrderDTO toDTO(Order order) {
         return OrderDTO.builder()
-                .datetime(order.datetime())
-                .status(order.status())
-                .employeeId(order.employee().id())
-                .clientId(order.client().id())
+                .datetime(order.getDatetime())
+                .status(order.getStatus())
+                .employeeId(order.getEmployee().getId())
+                .clientId(order.getClient().getId())
                 .build();
     }
 

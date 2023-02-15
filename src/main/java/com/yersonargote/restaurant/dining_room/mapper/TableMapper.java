@@ -8,9 +8,9 @@ import org.springframework.stereotype.Component;
 public class TableMapper {
     public TableDTO toDTO(Table table) {
         return TableDTO.builder()
-                .number(table.number())
-                .capacity(table.capacity())
-                .available(table.available())
+                .number(table.getNumber())
+                .capacity(table.getCapacity())
+                .available(table.getAvailable())
                 .build();
     }
 

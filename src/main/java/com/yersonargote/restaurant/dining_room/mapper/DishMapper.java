@@ -8,11 +8,11 @@ import org.springframework.stereotype.Component;
 public class DishMapper {
     public DishDTO toDTO(Dish dish) {
         return DishDTO.builder()
-                .name(dish.name())
-                .description(dish.description())
-                .price(dish.price())
-                .available(dish.available())
-                .category(dish.category())
+                .name(dish.getName())
+                .description(dish.getDescription())
+                .price(dish.getPrice())
+                .available(dish.getAvailable())
+                .category(dish.getCategory())
                 .build();
     }
 

@@ -9,10 +9,10 @@ import org.springframework.stereotype.Component;
 public class TicketMapper {
     public TickeDTO toDTO(Ticket ticket) {
         return TickeDTO.builder()
-                .paidDays(ticket.paidDays())
-                .consumedDays(ticket.consumedDays())
-                .active(ticket.active())
-                .orderId(ticket.order().id())
+                .paidDays(ticket.getPaidDays())
+                .consumedDays(ticket.getConsumedDays())
+                .active(ticket.getActive())
+                .orderId(ticket.getOrder().getId())
                 .build();
     }
 
