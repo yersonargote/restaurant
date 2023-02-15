@@ -22,4 +22,7 @@ public record Payment(
         @JoinColumn(name = "order_id")
         Order order
 ) {
+    public Payment() {
+        this(null, null, null, null);
+    }
 }

@@ -68,17 +68,19 @@ POST request `localhost:8080/api/v1/auth/login`
 
 # Todo list
 
-### Security
+### Security and Auth
 - [x] Register user
 - [x] Login
     - [x] Oauth2 with GitHub
 - [x] Logout
+- [ ] Redirect to page when login
  
-### Domain
-- [x] Create daily menu
-- [x] Create orders
-- [x] Create tickets
-- [ ] Relationships between entities
+### Dinning Room
+- [x] Create entities
+- [x] Relationships between entities
+- [x] Create repositories
+- [x] Create services
+- [ ] Create controllers
 
 # Native Compilation
 

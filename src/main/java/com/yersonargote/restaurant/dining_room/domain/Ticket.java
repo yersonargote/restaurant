@@ -23,4 +23,7 @@ public record Ticket(
         @JoinColumn(name = "order_id")
         Order order
 ) {
+    public Ticket() {
+        this(null, null, null, null, null);
+    }
 }

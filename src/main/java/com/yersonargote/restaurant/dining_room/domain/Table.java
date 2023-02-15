@@ -19,4 +19,7 @@ public record Table(
         @Column(nullable = false)
         boolean available
 ) {
+    public Table() {
+        this(null, 0, 0, false);
+    }
 }

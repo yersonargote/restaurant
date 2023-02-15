@@ -35,4 +35,7 @@ public record Order(
         @OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
         Ticket ticket
 ) {
+    public Order() {
+        this(null, null, null, null, null, null, null, null);
+    }
 }

@@ -28,4 +28,7 @@ public record Employee(
         @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
         List<Order> orders
 ) {
+    public Employee() {
+        this(null, null, null, null, null, null, null);
+    }
 }

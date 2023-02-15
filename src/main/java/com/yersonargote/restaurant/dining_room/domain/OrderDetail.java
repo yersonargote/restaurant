@@ -26,4 +26,7 @@ public record OrderDetail(
         @JoinColumn(name = "dish_id")
         Dish dish
 ) {
+    public OrderDetail() {
+        this(null, null, null, null, null, null);
+    }
 }

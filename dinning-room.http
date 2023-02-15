@@ -1,0 +1,16 @@
+GET http://{{host}}:{{port}}/api/client/{{id}}
+Accept: application/json
+Authorization: Bearer {{token}}
+
+###
+POST http://{{host}}:{{port}}/api/client
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "name": "John",
+  "lastName": "Doe",
+  "phone": "123456789"
+}
+
+###

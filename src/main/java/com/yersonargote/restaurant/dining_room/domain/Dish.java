@@ -28,4 +28,7 @@ public record Dish(
         @OneToMany(mappedBy = "dish", cascade = CascadeType.ALL)
         List<OrderDetail> ordersDetail
 ) {
+    public Dish() {
+        this(null, null, null, null, null, null, null);
+    }
 }
