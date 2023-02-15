@@ -19,11 +19,9 @@ public record OrderDetail(
         Double unitPrice,
         @Column(nullable = false)
         Double discount,
-        @Id
         @ManyToOne
         @JoinColumn(name = "order_id")
         Order order,
-        @Id
         @ManyToOne
         @JoinColumn(name = "dish_id")
         Dish dish
