@@ -1,11 +1,11 @@
 package com.yersonargote.restaurant.dining_room.service;
 
-import com.yersonargote.restaurant.dining_room.repository.IGenericRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
 
 public abstract class CrudGenericService<T, ID> implements ICrudGenericService<T, ID> {
-    protected abstract IGenericRepository<T, ID> getRepository();
+    protected abstract JpaRepository<T, ID> getRepository();
     @Override
     public <S extends T> S save(S entity) {
         return getRepository().save(entity);

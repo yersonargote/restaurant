@@ -2,9 +2,9 @@ package com.yersonargote.restaurant.dining_room.service;
 
 import com.yersonargote.restaurant.dining_room.domain.Client;
 import com.yersonargote.restaurant.dining_room.repository.ClientRepo;
-import com.yersonargote.restaurant.dining_room.repository.IGenericRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -16,7 +16,7 @@ public class ClientService extends CrudGenericService<Client, UUID> {
     private final ClientRepo clientRepository;
 
     @Override
-    protected IGenericRepository<Client, UUID> getRepository() {
+    protected JpaRepository<Client, UUID> getRepository() {
         return clientRepository;
     }
 }

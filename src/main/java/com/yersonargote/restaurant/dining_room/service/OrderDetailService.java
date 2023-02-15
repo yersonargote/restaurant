@@ -1,10 +1,10 @@
 package com.yersonargote.restaurant.dining_room.service;
 
 import com.yersonargote.restaurant.dining_room.domain.OrderDetail;
-import com.yersonargote.restaurant.dining_room.repository.IGenericRepository;
 import com.yersonargote.restaurant.dining_room.repository.OrderDetailRepo;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -16,7 +16,7 @@ public class OrderDetailService extends CrudGenericService<OrderDetail, UUID> {
     private final OrderDetailRepo orderDetailRepository;
 
     @Override
-    protected IGenericRepository<OrderDetail, UUID> getRepository() {
+    protected JpaRepository<OrderDetail, UUID> getRepository() {
         return orderDetailRepository;
     }
 }
