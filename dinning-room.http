@@ -1,16 +1,14 @@
-GET http://{{host}}:{{port}}/api/client/{{id}}
+GET http://{{host}}:{{port}}/api/v1/client/{{id}}
 Accept: application/json
 Authorization: Bearer {{token}}
 
 ###
-POST http://{{host}}:{{port}}/api/client
+POST http://{{host}}:{{port}}/api/v1/client
 Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "name": "John",
-  "lastName": "Doe",
-  "phone": "123456789"
+  "name": {{name}},
+  "lastName": {{lastName}},
+  "phone": {{phone}}
 }
-
-###
