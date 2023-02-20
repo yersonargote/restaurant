@@ -19,7 +19,8 @@ import java.io.IOException;
 @Component
 @RequiredArgsConstructor
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
-
+    private static final String AUTH_HEADER = "Authorization";
+    private static final String AUTH_TYPE = "Bearer ";
     private final JwtService jwtService;
     private final UserDetailsService userDetailsService;
 
@@ -28,8 +29,8 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             @NonNull HttpServletRequest request,
             @NonNull HttpServletResponse response,
             @NonNull FilterChain filterChain) throws ServletException, IOException {
-        final String authorizationHeader = request.getHeader("Authorization");
-        if (authorizationHeader == null || !authorizationHeader.startsWith("Bearer ")) {
+        final String authorizationHeader = request.getHeader(AUTH_HEADER);
+        if (authorizationHeader == null || !authorizationHeader.startsWith(AUTH_TYPE)) {
             filterChain.doFilter(request, response);
             return;
         }

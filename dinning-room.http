@@ -1,15 +1,36 @@
 GET http://{{host}}:{{port}}/api/v1/client/{{id}}
 Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+GET http://{{host}}:{{port}}/api/v1/client
+Accept: application/json
+Content-Type: application/json
 Authorization: Bearer {{token}}
 
 ###
 POST http://{{host}}:{{port}}/api/v1/client
+Accept: application/json
 Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "identification": {{identification}},
-  "name": {{name}},
-  "lastName": {{lastName}},
-  "phone": {{phone}}
+  "identification": "{{identification}}",
+  "name": "{{name}}",
+  "lastName": "{{lastName}}",
+  "phone": "{{phone}}"
+}
+
+###
+PUT http://{{host}}:{{port}}/api/v1/client/{{id}}
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "identification": "{{identification_update}}",
+  "name": "{{name_update}}",
+  "lastName": "{{lastName_update}}",
+  "phone": "{{phone_update}}"
 }
