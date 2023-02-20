@@ -18,6 +18,8 @@ public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     UUID id;
+    @Column(nullable = false, unique = true)
+    String identification;
     @Column(nullable = false)
     String name;
     @Column(name = "last_name", nullable = false)

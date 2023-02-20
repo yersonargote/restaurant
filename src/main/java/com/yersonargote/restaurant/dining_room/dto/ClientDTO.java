@@ -4,6 +4,7 @@ import lombok.Builder;
 
 @Builder
 public record ClientDTO(
+        String identification,
         String name,
         String lastName,
         String phone

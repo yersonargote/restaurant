@@ -18,7 +18,7 @@ public class Dish {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     UUID id;
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     String name;
     @Column(nullable = false)
     String description;

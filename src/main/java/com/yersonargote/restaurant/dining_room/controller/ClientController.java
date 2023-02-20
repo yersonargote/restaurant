@@ -37,14 +37,13 @@ public class ClientController {
     public ResponseEntity<UUID> createClient(@RequestBody ClientDTO clientDTO) {
         Client client = clientMapper.toDomain(clientDTO);
         client = clientService.save(client);
-        if (client.getId() != null) {
-            return ResponseEntity.ok(client.getId());
-        } else {
+        if (client.getId() == null) {
             return ResponseEntity.badRequest().build();
         }
+        return ResponseEntity.ok(client.getId());
     }
 
-    @PatchMapping(path = "/client/{id}", consumes = "application/json", produces = "application/json")
+    @PutMapping(path = "/client/{id}", consumes = "application/json", produces = "application/json")
     public ResponseEntity<ClientDTO> updateClient(@PathVariable UUID id, @RequestBody ClientDTO clientDTO) {
         Client client = clientMapper.toDomain(clientDTO);
         client.setId(id);

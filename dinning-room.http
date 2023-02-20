@@ -8,6 +8,7 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
+  "identification": {{identification}},
   "name": {{name}},
   "lastName": {{lastName}},
   "phone": {{phone}}

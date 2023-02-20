@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 public class ClientMapper {
     public ClientDTO toDTO(Client client) {
         return ClientDTO.builder()
+                .identification(client.getIdentification())
                 .name(client.getName())
                 .lastName(client.getLastName())
                 .phone(client.getPhone())
@@ -16,6 +17,7 @@ public class ClientMapper {
 
     public Client toDomain(ClientDTO clientDTO) {
         return Client.builder()
+                .identification(clientDTO.identification())
                 .name(clientDTO.name())
                 .lastName(clientDTO.lastName())
                 .phone(clientDTO.phone())
