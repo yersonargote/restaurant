@@ -80,7 +80,7 @@ POST request `localhost:8080/api/v1/auth/login`
 - [x] Relationships between entities
 - [x] Create repositories
 - [x] Create services
-- [ ] Create controllers
+- [x] Create controllers
 
 # Native Compilation
 
