@@ -1,5 +1,8 @@
 package com.yersonargote.restaurant.dining_room.service;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import java.util.Optional;
 
 public interface ICrudGenericService<T, ID> {
@@ -11,5 +14,5 @@ public interface ICrudGenericService<T, ID> {
 
     Optional<T> delete(ID id);
 
-    Iterable<T> findAll();
+    Page<T> findAll(Pageable pageable);
 }

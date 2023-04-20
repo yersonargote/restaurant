@@ -5,6 +5,10 @@ import com.yersonargote.restaurant.dining_room.dto.ClientDTO;
 import com.yersonargote.restaurant.dining_room.mapper.ClientMapper;
 import com.yersonargote.restaurant.dining_room.service.ClientService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,8 +22,13 @@ public class ClientController {
     private final ClientMapper clientMapper;
 
     @GetMapping(path = "/client", produces = "application/json")
-    public ResponseEntity<Iterable<ClientDTO>> getAllClients() {
-        Iterable<Client> clients = clientService.findAll();
+    public ResponseEntity<Iterable<ClientDTO>> getAllClients(
+            @RequestParam(defaultValue = "0", required = false) Integer page,
+            @RequestParam(defaultValue = "10", required = false) Integer size,
+            @RequestParam(defaultValue = "identification", required = false) String sortBy
+    ) {
+        Pageable paging = PageRequest.of(page, size, Sort.by(sortBy));
+        Page<Client> clients = clientService.findAll(paging);
         List<ClientDTO> clientDTOS = new ArrayList<>();
         clients.forEach(client -> clientDTOS.add(clientMapper.toDTO(client)));
         return ResponseEntity.ok(clientDTOS);
