@@ -5,10 +5,13 @@ import com.yersonargote.restaurant.dining_room.dto.TableDTO;
 import com.yersonargote.restaurant.dining_room.mapper.TableMapper;
 import com.yersonargote.restaurant.dining_room.service.TableService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -21,11 +24,15 @@ public class TableController {
     private final TableMapper tableMapper;
 
     @GetMapping(path = "/table", produces = "application/json")
-    public ResponseEntity<Iterable<TableDTO>> getAllTables() {
-        Iterable<Table> tables = tableService.findAll();
-        List<TableDTO> tableDTOS = new ArrayList<>();
-        tables.forEach(table -> tableDTOS.add(tableMapper.toDTO(table)));
-        return ResponseEntity.ok(tableDTOS);
+    public ResponseEntity<Iterable<TableDTO>> getAllTables(
+            @RequestParam(defaultValue = "0", required = false) Integer page,
+            @RequestParam(defaultValue = "10", required = false) Integer size,
+            @RequestParam(defaultValue = "name", required = false) String sortBy
+    ) {
+        Pageable paging = PageRequest.of(page, size, Sort.by(sortBy));
+        Page<Table> tables = tableService.findAll(paging);
+        List<TableDTO> tablesDTO = tables.map(tableMapper::toDTO).getContent();
+        return ResponseEntity.ok(tablesDTO);
     }
 
     @GetMapping(path = "/table/{id}", produces = "application/json")

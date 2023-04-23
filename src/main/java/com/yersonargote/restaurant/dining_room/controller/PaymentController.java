@@ -5,6 +5,10 @@ import com.yersonargote.restaurant.dining_room.dto.PaymentDTO;
 import com.yersonargote.restaurant.dining_room.mapper.PaymentMapper;
 import com.yersonargote.restaurant.dining_room.service.PaymentService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,11 +25,15 @@ public class PaymentController {
     private final PaymentMapper paymentMapper;
 
     @GetMapping(path = "/payment", produces = "application/json")
-    public ResponseEntity<Iterable<PaymentDTO>> getAllPayments() {
-        Iterable<Payment> payments = paymentService.findAll();
-        List<PaymentDTO> paymentDTOS = new ArrayList<>();
-        payments.forEach(payment -> paymentDTOS.add(paymentMapper.toDTO(payment)));
-        return ResponseEntity.ok(paymentDTOS);
+    public ResponseEntity<Iterable<PaymentDTO>> getAllPayments(
+            @RequestParam(defaultValue = "0", required = false) Integer page,
+            @RequestParam(defaultValue = "10", required = false) Integer size,
+            @RequestParam(defaultValue = "name", required = false) String sortBy
+    ) {
+        Pageable paging = PageRequest.of(page, size, Sort.by(sortBy));
+        Page<Payment> payments = paymentService.findAll(paging);
+        List<PaymentDTO> paymentsDTO = payments.map(paymentMapper::toDTO).getContent();
+        return ResponseEntity.ok(paymentsDTO);
     }
 
     @GetMapping(path = "/payment/{id}", produces = "application/json")

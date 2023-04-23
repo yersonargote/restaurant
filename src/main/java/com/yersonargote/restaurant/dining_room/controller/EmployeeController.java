@@ -5,10 +5,13 @@ import com.yersonargote.restaurant.dining_room.dto.EmployeeDTO;
 import com.yersonargote.restaurant.dining_room.mapper.EmployeeMapper;
 import com.yersonargote.restaurant.dining_room.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -21,11 +24,15 @@ public class EmployeeController {
     private final EmployeeMapper employeeMapper;
 
     @GetMapping(path = "/employee", produces = "application/json")
-    public ResponseEntity<Iterable<EmployeeDTO>> getAllEmployees() {
-        Iterable<Employee> employees = employeeService.findAll();
-        List<EmployeeDTO> employeeDTOS = new ArrayList<>();
-        employees.forEach(employee -> employeeDTOS.add(employeeMapper.toDTO(employee)));
-        return ResponseEntity.ok(employeeDTOS);
+    public ResponseEntity<Iterable<EmployeeDTO>> getAllEmployees(
+            @RequestParam(defaultValue = "0", required = false) Integer page,
+            @RequestParam(defaultValue = "10", required = false) Integer size,
+            @RequestParam(defaultValue = "name", required = false) String sortBy
+    ) {
+        Pageable paging = PageRequest.of(page, size, Sort.by(sortBy));
+        Page<Employee> employees = employeeService.findAll(paging);
+        List<EmployeeDTO> employeesDTO = employees.map(employeeMapper::toDTO).getContent();
+        return ResponseEntity.ok(employeesDTO);
     }
 
     @GetMapping(path = "/employee/{id}", produces = "application/json")
